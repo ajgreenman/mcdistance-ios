@@ -27,7 +27,10 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+<<<<<<< HEAD
 		<string>location-services</string>
+=======
+>>>>>>> 0c4061d9526214cddbfe860af2cfab8868f8fc41
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

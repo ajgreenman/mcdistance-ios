@@ -10,8 +10,11 @@
 
 @interface CCMHomeViewController : UIViewController
 
+<<<<<<< HEAD
 @property (strong, nonatomic) NSNumber *mcDistanceValue;
 @property (strong, nonatomic) NSNumber *conversionValue;
 @property (strong, nonatomic, readonly) *minDistanceAway;
 
+=======
+>>>>>>> 0c4061d9526214cddbfe860af2cfab8868f8fc41
 @end
