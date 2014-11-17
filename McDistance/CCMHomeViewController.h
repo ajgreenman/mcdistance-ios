@@ -10,11 +10,17 @@
 
 @interface CCMHomeViewController : UIViewController
 
-<<<<<<< HEAD
+typedef enum {
+    FEET, METERS, MILES, KILOMETERS
+} Units;
+
+@property (strong, nonatomic) NSNumber *distanceAway;
 @property (strong, nonatomic) NSNumber *mcDistanceValue;
 @property (strong, nonatomic) NSNumber *conversionValue;
-@property (strong, nonatomic, readonly) *minDistanceAway;
+@property (strong, nonatomic) NSNumber *minDistanceAway; // In meters.
+@property (nonatomic) Units unit;
 
-=======
->>>>>>> 0c4061d9526214cddbfe860af2cfab8868f8fc41
+- (instancetype) init;
+- (void) update;
+
 @end

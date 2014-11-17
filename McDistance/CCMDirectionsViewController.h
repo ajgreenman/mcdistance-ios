@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CCMDirectionsViewController : NSViewController
+@interface CCMDirectionsViewController : UIViewController
 
 @end
