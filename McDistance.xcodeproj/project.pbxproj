@@ -7,156 +7,163 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3312D5CD19EEDB5A00E70B17 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3312D5CC19EEDB5A00E70B17 /* Foundation.framework */; };
-		3312D5CF19EEDB5A00E70B17 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3312D5CE19EEDB5A00E70B17 /* CoreGraphics.framework */; };
-		3312D5D119EEDB5A00E70B17 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3312D5D019EEDB5A00E70B17 /* UIKit.framework */; };
-		3312D5D719EEDB5A00E70B17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3312D5D519EEDB5A00E70B17 /* InfoPlist.strings */; };
-		3312D5D919EEDB5A00E70B17 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3312D5D819EEDB5A00E70B17 /* main.m */; };
-		3312D5DD19EEDB5A00E70B17 /* CCMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3312D5DC19EEDB5A00E70B17 /* CCMAppDelegate.m */; };
-		3312D5DF19EEDB5A00E70B17 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3312D5DE19EEDB5A00E70B17 /* Images.xcassets */; };
-		3312D5E619EEDB5A00E70B17 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3312D5E519EEDB5A00E70B17 /* XCTest.framework */; };
-		3312D5E719EEDB5A00E70B17 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3312D5CC19EEDB5A00E70B17 /* Foundation.framework */; };
-		3312D5E819EEDB5A00E70B17 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3312D5D019EEDB5A00E70B17 /* UIKit.framework */; };
-		3312D5F019EEDB5A00E70B17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3312D5EE19EEDB5A00E70B17 /* InfoPlist.strings */; };
-		3312D5F219EEDB5A00E70B17 /* McDistanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3312D5F119EEDB5A00E70B17 /* McDistanceTests.m */; };
-		3312D5FC19EEDB6300E70B17 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3312D5FB19EEDB6300E70B17 /* MapKit.framework */; };
-		3312D60319EEDC0D00E70B17 /* CCMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3312D60119EEDC0D00E70B17 /* CCMHomeViewController.m */; };
-		3312D60419EEDC0D00E70B17 /* CCMHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3312D60219EEDC0D00E70B17 /* CCMHomeViewController.xib */; };
-		33D91B261A1A6D34006969E1 /* CCMDirectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D91B251A1A6D34006969E1 /* CCMDirectionsViewController.m */; };
+		33451CFD1A1FB4ED0087EC30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33451CFC1A1FB4ED0087EC30 /* Foundation.framework */; };
+		33451CFF1A1FB4ED0087EC30 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33451CFE1A1FB4ED0087EC30 /* CoreGraphics.framework */; };
+		33451D011A1FB4ED0087EC30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33451D001A1FB4ED0087EC30 /* UIKit.framework */; };
+		33451D071A1FB4ED0087EC30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33451D051A1FB4ED0087EC30 /* InfoPlist.strings */; };
+		33451D091A1FB4ED0087EC30 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 33451D081A1FB4ED0087EC30 /* main.m */; };
+		33451D0D1A1FB4ED0087EC30 /* AJGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 33451D0C1A1FB4ED0087EC30 /* AJGAppDelegate.m */; };
+		33451D0F1A1FB4ED0087EC30 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33451D0E1A1FB4ED0087EC30 /* Images.xcassets */; };
+		33451D161A1FB4ED0087EC30 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33451D151A1FB4ED0087EC30 /* XCTest.framework */; };
+		33451D171A1FB4ED0087EC30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33451CFC1A1FB4ED0087EC30 /* Foundation.framework */; };
+		33451D181A1FB4ED0087EC30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33451D001A1FB4ED0087EC30 /* UIKit.framework */; };
+		33451D201A1FB4ED0087EC30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33451D1E1A1FB4ED0087EC30 /* InfoPlist.strings */; };
+		33451D221A1FB4ED0087EC30 /* McDistanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 33451D211A1FB4ED0087EC30 /* McDistanceTests.m */; };
+		33451D2E1A1FB5850087EC30 /* AJGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33451D2C1A1FB5850087EC30 /* AJGHomeViewController.m */; };
+		33451D2F1A1FB5850087EC30 /* AJGHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33451D2D1A1FB5850087EC30 /* AJGHomeViewController.xib */; };
+		33451D311A1FB9390087EC30 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33451D301A1FB9390087EC30 /* MapKit.framework */; };
+		33F984991A1FBA5500F6D528 /* AJGDirectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F984971A1FBA5500F6D528 /* AJGDirectionsViewController.m */; };
+		33F9849A1A1FBA5500F6D528 /* AJGDirectionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33F984981A1FBA5500F6D528 /* AJGDirectionsViewController.xib */; };
+		33F9849C1A1FBFD700F6D528 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F9849B1A1FBFD700F6D528 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3312D5E919EEDB5A00E70B17 /* PBXContainerItemProxy */ = {
+		33451D191A1FB4ED0087EC30 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3312D5C119EEDB5A00E70B17 /* Project object */;
+			containerPortal = 33451CF11A1FB4ED0087EC30 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 3312D5C819EEDB5A00E70B17;
+			remoteGlobalIDString = 33451CF81A1FB4ED0087EC30;
 			remoteInfo = McDistance;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3312D5C919EEDB5A00E70B17 /* McDistance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = McDistance.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3312D5CC19EEDB5A00E70B17 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		3312D5CE19EEDB5A00E70B17 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3312D5D019EEDB5A00E70B17 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		3312D5D419EEDB5A00E70B17 /* McDistance-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "McDistance-Info.plist"; sourceTree = "<group>"; };
-		3312D5D619EEDB5A00E70B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3312D5D819EEDB5A00E70B17 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3312D5DA19EEDB5A00E70B17 /* McDistance-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "McDistance-Prefix.pch"; sourceTree = "<group>"; };
-		3312D5DB19EEDB5A00E70B17 /* CCMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCMAppDelegate.h; sourceTree = "<group>"; };
-		3312D5DC19EEDB5A00E70B17 /* CCMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCMAppDelegate.m; sourceTree = "<group>"; };
-		3312D5DE19EEDB5A00E70B17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3312D5E419EEDB5A00E70B17 /* McDistanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = McDistanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3312D5E519EEDB5A00E70B17 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		3312D5ED19EEDB5A00E70B17 /* McDistanceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "McDistanceTests-Info.plist"; sourceTree = "<group>"; };
-		3312D5EF19EEDB5A00E70B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3312D5F119EEDB5A00E70B17 /* McDistanceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = McDistanceTests.m; sourceTree = "<group>"; };
-		3312D5FB19EEDB6300E70B17 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		3312D60019EEDC0D00E70B17 /* CCMHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMHomeViewController.h; sourceTree = "<group>"; };
-		3312D60119EEDC0D00E70B17 /* CCMHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMHomeViewController.m; sourceTree = "<group>"; };
-		3312D60219EEDC0D00E70B17 /* CCMHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCMHomeViewController.xib; sourceTree = "<group>"; };
-		33D91B241A1A6D34006969E1 /* CCMDirectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMDirectionsViewController.h; sourceTree = "<group>"; };
-		33D91B251A1A6D34006969E1 /* CCMDirectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMDirectionsViewController.m; sourceTree = "<group>"; };
+		33451CF91A1FB4ED0087EC30 /* McDistance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = McDistance.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		33451CFC1A1FB4ED0087EC30 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		33451CFE1A1FB4ED0087EC30 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		33451D001A1FB4ED0087EC30 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		33451D041A1FB4ED0087EC30 /* McDistance-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "McDistance-Info.plist"; sourceTree = "<group>"; };
+		33451D061A1FB4ED0087EC30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		33451D081A1FB4ED0087EC30 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		33451D0A1A1FB4ED0087EC30 /* McDistance-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "McDistance-Prefix.pch"; sourceTree = "<group>"; };
+		33451D0B1A1FB4ED0087EC30 /* AJGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJGAppDelegate.h; sourceTree = "<group>"; };
+		33451D0C1A1FB4ED0087EC30 /* AJGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJGAppDelegate.m; sourceTree = "<group>"; };
+		33451D0E1A1FB4ED0087EC30 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		33451D141A1FB4ED0087EC30 /* McDistanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = McDistanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		33451D151A1FB4ED0087EC30 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		33451D1D1A1FB4ED0087EC30 /* McDistanceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "McDistanceTests-Info.plist"; sourceTree = "<group>"; };
+		33451D1F1A1FB4ED0087EC30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		33451D211A1FB4ED0087EC30 /* McDistanceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = McDistanceTests.m; sourceTree = "<group>"; };
+		33451D2B1A1FB5850087EC30 /* AJGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJGHomeViewController.h; path = McDistance/AJGHomeViewController.h; sourceTree = "<group>"; };
+		33451D2C1A1FB5850087EC30 /* AJGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJGHomeViewController.m; path = McDistance/AJGHomeViewController.m; sourceTree = "<group>"; };
+		33451D2D1A1FB5850087EC30 /* AJGHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AJGHomeViewController.xib; path = McDistance/AJGHomeViewController.xib; sourceTree = "<group>"; };
+		33451D301A1FB9390087EC30 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		33F984961A1FBA5500F6D528 /* AJGDirectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJGDirectionsViewController.h; path = McDistance/AJGDirectionsViewController.h; sourceTree = "<group>"; };
+		33F984971A1FBA5500F6D528 /* AJGDirectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJGDirectionsViewController.m; path = McDistance/AJGDirectionsViewController.m; sourceTree = "<group>"; };
+		33F984981A1FBA5500F6D528 /* AJGDirectionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AJGDirectionsViewController.xib; path = McDistance/AJGDirectionsViewController.xib; sourceTree = "<group>"; };
+		33F9849B1A1FBFD700F6D528 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3312D5C619EEDB5A00E70B17 /* Frameworks */ = {
+		33451CF61A1FB4ED0087EC30 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3312D5FC19EEDB6300E70B17 /* MapKit.framework in Frameworks */,
-				3312D5CF19EEDB5A00E70B17 /* CoreGraphics.framework in Frameworks */,
-				3312D5D119EEDB5A00E70B17 /* UIKit.framework in Frameworks */,
-				3312D5CD19EEDB5A00E70B17 /* Foundation.framework in Frameworks */,
+				33F9849C1A1FBFD700F6D528 /* CoreLocation.framework in Frameworks */,
+				33451D311A1FB9390087EC30 /* MapKit.framework in Frameworks */,
+				33451CFF1A1FB4ED0087EC30 /* CoreGraphics.framework in Frameworks */,
+				33451D011A1FB4ED0087EC30 /* UIKit.framework in Frameworks */,
+				33451CFD1A1FB4ED0087EC30 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3312D5E119EEDB5A00E70B17 /* Frameworks */ = {
+		33451D111A1FB4ED0087EC30 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3312D5E619EEDB5A00E70B17 /* XCTest.framework in Frameworks */,
-				3312D5E819EEDB5A00E70B17 /* UIKit.framework in Frameworks */,
-				3312D5E719EEDB5A00E70B17 /* Foundation.framework in Frameworks */,
+				33451D161A1FB4ED0087EC30 /* XCTest.framework in Frameworks */,
+				33451D181A1FB4ED0087EC30 /* UIKit.framework in Frameworks */,
+				33451D171A1FB4ED0087EC30 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3312D5C019EEDB5A00E70B17 = {
+		33451CF01A1FB4ED0087EC30 = {
 			isa = PBXGroup;
 			children = (
-				3312D5D219EEDB5A00E70B17 /* McDistance */,
-				3312D5EB19EEDB5A00E70B17 /* McDistanceTests */,
-				3312D5CB19EEDB5A00E70B17 /* Frameworks */,
-				3312D5CA19EEDB5A00E70B17 /* Products */,
+				33451D2B1A1FB5850087EC30 /* AJGHomeViewController.h */,
+				33451D2C1A1FB5850087EC30 /* AJGHomeViewController.m */,
+				33451D2D1A1FB5850087EC30 /* AJGHomeViewController.xib */,
+				33F984961A1FBA5500F6D528 /* AJGDirectionsViewController.h */,
+				33F984971A1FBA5500F6D528 /* AJGDirectionsViewController.m */,
+				33F984981A1FBA5500F6D528 /* AJGDirectionsViewController.xib */,
+				33451D021A1FB4ED0087EC30 /* McDistance */,
+				33451D1B1A1FB4ED0087EC30 /* McDistanceTests */,
+				33451CFB1A1FB4ED0087EC30 /* Frameworks */,
+				33451CFA1A1FB4ED0087EC30 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		3312D5CA19EEDB5A00E70B17 /* Products */ = {
+		33451CFA1A1FB4ED0087EC30 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3312D5C919EEDB5A00E70B17 /* McDistance.app */,
-				3312D5E419EEDB5A00E70B17 /* McDistanceTests.xctest */,
+				33451CF91A1FB4ED0087EC30 /* McDistance.app */,
+				33451D141A1FB4ED0087EC30 /* McDistanceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3312D5CB19EEDB5A00E70B17 /* Frameworks */ = {
+		33451CFB1A1FB4ED0087EC30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3312D5FB19EEDB6300E70B17 /* MapKit.framework */,
-				3312D5CC19EEDB5A00E70B17 /* Foundation.framework */,
-				3312D5CE19EEDB5A00E70B17 /* CoreGraphics.framework */,
-				3312D5D019EEDB5A00E70B17 /* UIKit.framework */,
-				3312D5E519EEDB5A00E70B17 /* XCTest.framework */,
+				33F9849B1A1FBFD700F6D528 /* CoreLocation.framework */,
+				33451D301A1FB9390087EC30 /* MapKit.framework */,
+				33451CFC1A1FB4ED0087EC30 /* Foundation.framework */,
+				33451CFE1A1FB4ED0087EC30 /* CoreGraphics.framework */,
+				33451D001A1FB4ED0087EC30 /* UIKit.framework */,
+				33451D151A1FB4ED0087EC30 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3312D5D219EEDB5A00E70B17 /* McDistance */ = {
+		33451D021A1FB4ED0087EC30 /* McDistance */ = {
 			isa = PBXGroup;
 			children = (
-				3312D60019EEDC0D00E70B17 /* CCMHomeViewController.h */,
-				3312D60119EEDC0D00E70B17 /* CCMHomeViewController.m */,
-				3312D60219EEDC0D00E70B17 /* CCMHomeViewController.xib */,
-				33D91B241A1A6D34006969E1 /* CCMDirectionsViewController.h */,
-				33D91B251A1A6D34006969E1 /* CCMDirectionsViewController.m */,
-				3312D5DB19EEDB5A00E70B17 /* CCMAppDelegate.h */,
-				3312D5DC19EEDB5A00E70B17 /* CCMAppDelegate.m */,
-				3312D5DE19EEDB5A00E70B17 /* Images.xcassets */,
-				3312D5D319EEDB5A00E70B17 /* Supporting Files */,
+				33451D0B1A1FB4ED0087EC30 /* AJGAppDelegate.h */,
+				33451D0C1A1FB4ED0087EC30 /* AJGAppDelegate.m */,
+				33451D0E1A1FB4ED0087EC30 /* Images.xcassets */,
+				33451D031A1FB4ED0087EC30 /* Supporting Files */,
 			);
 			path = McDistance;
 			sourceTree = "<group>";
 		};
-		3312D5D319EEDB5A00E70B17 /* Supporting Files */ = {
+		33451D031A1FB4ED0087EC30 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3312D5D419EEDB5A00E70B17 /* McDistance-Info.plist */,
-				3312D5D519EEDB5A00E70B17 /* InfoPlist.strings */,
-				3312D5D819EEDB5A00E70B17 /* main.m */,
-				3312D5DA19EEDB5A00E70B17 /* McDistance-Prefix.pch */,
+				33451D041A1FB4ED0087EC30 /* McDistance-Info.plist */,
+				33451D051A1FB4ED0087EC30 /* InfoPlist.strings */,
+				33451D081A1FB4ED0087EC30 /* main.m */,
+				33451D0A1A1FB4ED0087EC30 /* McDistance-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3312D5EB19EEDB5A00E70B17 /* McDistanceTests */ = {
+		33451D1B1A1FB4ED0087EC30 /* McDistanceTests */ = {
 			isa = PBXGroup;
 			children = (
-				3312D5F119EEDB5A00E70B17 /* McDistanceTests.m */,
-				3312D5EC19EEDB5A00E70B17 /* Supporting Files */,
+				33451D211A1FB4ED0087EC30 /* McDistanceTests.m */,
+				33451D1C1A1FB4ED0087EC30 /* Supporting Files */,
 			);
 			path = McDistanceTests;
 			sourceTree = "<group>";
 		};
-		3312D5EC19EEDB5A00E70B17 /* Supporting Files */ = {
+		33451D1C1A1FB4ED0087EC30 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3312D5ED19EEDB5A00E70B17 /* McDistanceTests-Info.plist */,
-				3312D5EE19EEDB5A00E70B17 /* InfoPlist.strings */,
+				33451D1D1A1FB4ED0087EC30 /* McDistanceTests-Info.plist */,
+				33451D1E1A1FB4ED0087EC30 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -164,13 +171,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3312D5C819EEDB5A00E70B17 /* McDistance */ = {
+		33451CF81A1FB4ED0087EC30 /* McDistance */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3312D5F519EEDB5A00E70B17 /* Build configuration list for PBXNativeTarget "McDistance" */;
+			buildConfigurationList = 33451D251A1FB4ED0087EC30 /* Build configuration list for PBXNativeTarget "McDistance" */;
 			buildPhases = (
-				3312D5C519EEDB5A00E70B17 /* Sources */,
-				3312D5C619EEDB5A00E70B17 /* Frameworks */,
-				3312D5C719EEDB5A00E70B17 /* Resources */,
+				33451CF51A1FB4ED0087EC30 /* Sources */,
+				33451CF61A1FB4ED0087EC30 /* Frameworks */,
+				33451CF71A1FB4ED0087EC30 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -178,124 +185,125 @@
 			);
 			name = McDistance;
 			productName = McDistance;
-			productReference = 3312D5C919EEDB5A00E70B17 /* McDistance.app */;
+			productReference = 33451CF91A1FB4ED0087EC30 /* McDistance.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3312D5E319EEDB5A00E70B17 /* McDistanceTests */ = {
+		33451D131A1FB4ED0087EC30 /* McDistanceTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3312D5F819EEDB5A00E70B17 /* Build configuration list for PBXNativeTarget "McDistanceTests" */;
+			buildConfigurationList = 33451D281A1FB4ED0087EC30 /* Build configuration list for PBXNativeTarget "McDistanceTests" */;
 			buildPhases = (
-				3312D5E019EEDB5A00E70B17 /* Sources */,
-				3312D5E119EEDB5A00E70B17 /* Frameworks */,
-				3312D5E219EEDB5A00E70B17 /* Resources */,
+				33451D101A1FB4ED0087EC30 /* Sources */,
+				33451D111A1FB4ED0087EC30 /* Frameworks */,
+				33451D121A1FB4ED0087EC30 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3312D5EA19EEDB5A00E70B17 /* PBXTargetDependency */,
+				33451D1A1A1FB4ED0087EC30 /* PBXTargetDependency */,
 			);
 			name = McDistanceTests;
 			productName = McDistanceTests;
-			productReference = 3312D5E419EEDB5A00E70B17 /* McDistanceTests.xctest */;
+			productReference = 33451D141A1FB4ED0087EC30 /* McDistanceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		3312D5C119EEDB5A00E70B17 /* Project object */ = {
+		33451CF11A1FB4ED0087EC30 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = CCM;
+				CLASSPREFIX = AJG;
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Cherry Capital Mobile";
+				ORGANIZATIONNAME = com.andrewjgreenman;
 				TargetAttributes = {
-					3312D5E319EEDB5A00E70B17 = {
-						TestTargetID = 3312D5C819EEDB5A00E70B17;
+					33451D131A1FB4ED0087EC30 = {
+						TestTargetID = 33451CF81A1FB4ED0087EC30;
 					};
 				};
 			};
-			buildConfigurationList = 3312D5C419EEDB5A00E70B17 /* Build configuration list for PBXProject "McDistance" */;
+			buildConfigurationList = 33451CF41A1FB4ED0087EC30 /* Build configuration list for PBXProject "McDistance" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 3312D5C019EEDB5A00E70B17;
-			productRefGroup = 3312D5CA19EEDB5A00E70B17 /* Products */;
+			mainGroup = 33451CF01A1FB4ED0087EC30;
+			productRefGroup = 33451CFA1A1FB4ED0087EC30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3312D5C819EEDB5A00E70B17 /* McDistance */,
-				3312D5E319EEDB5A00E70B17 /* McDistanceTests */,
+				33451CF81A1FB4ED0087EC30 /* McDistance */,
+				33451D131A1FB4ED0087EC30 /* McDistanceTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3312D5C719EEDB5A00E70B17 /* Resources */ = {
+		33451CF71A1FB4ED0087EC30 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3312D5D719EEDB5A00E70B17 /* InfoPlist.strings in Resources */,
-				3312D5DF19EEDB5A00E70B17 /* Images.xcassets in Resources */,
-				3312D60419EEDC0D00E70B17 /* CCMHomeViewController.xib in Resources */,
+				33451D071A1FB4ED0087EC30 /* InfoPlist.strings in Resources */,
+				33F9849A1A1FBA5500F6D528 /* AJGDirectionsViewController.xib in Resources */,
+				33451D0F1A1FB4ED0087EC30 /* Images.xcassets in Resources */,
+				33451D2F1A1FB5850087EC30 /* AJGHomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3312D5E219EEDB5A00E70B17 /* Resources */ = {
+		33451D121A1FB4ED0087EC30 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3312D5F019EEDB5A00E70B17 /* InfoPlist.strings in Resources */,
+				33451D201A1FB4ED0087EC30 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3312D5C519EEDB5A00E70B17 /* Sources */ = {
+		33451CF51A1FB4ED0087EC30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3312D5DD19EEDB5A00E70B17 /* CCMAppDelegate.m in Sources */,
-				3312D60319EEDC0D00E70B17 /* CCMHomeViewController.m in Sources */,
-				33D91B261A1A6D34006969E1 /* CCMDirectionsViewController.m in Sources */,
-				3312D5D919EEDB5A00E70B17 /* main.m in Sources */,
+				33451D2E1A1FB5850087EC30 /* AJGHomeViewController.m in Sources */,
+				33F984991A1FBA5500F6D528 /* AJGDirectionsViewController.m in Sources */,
+				33451D091A1FB4ED0087EC30 /* main.m in Sources */,
+				33451D0D1A1FB4ED0087EC30 /* AJGAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3312D5E019EEDB5A00E70B17 /* Sources */ = {
+		33451D101A1FB4ED0087EC30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3312D5F219EEDB5A00E70B17 /* McDistanceTests.m in Sources */,
+				33451D221A1FB4ED0087EC30 /* McDistanceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3312D5EA19EEDB5A00E70B17 /* PBXTargetDependency */ = {
+		33451D1A1A1FB4ED0087EC30 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3312D5C819EEDB5A00E70B17 /* McDistance */;
-			targetProxy = 3312D5E919EEDB5A00E70B17 /* PBXContainerItemProxy */;
+			target = 33451CF81A1FB4ED0087EC30 /* McDistance */;
+			targetProxy = 33451D191A1FB4ED0087EC30 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3312D5D519EEDB5A00E70B17 /* InfoPlist.strings */ = {
+		33451D051A1FB4ED0087EC30 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3312D5D619EEDB5A00E70B17 /* en */,
+				33451D061A1FB4ED0087EC30 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		3312D5EE19EEDB5A00E70B17 /* InfoPlist.strings */ = {
+		33451D1E1A1FB4ED0087EC30 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3312D5EF19EEDB5A00E70B17 /* en */,
+				33451D1F1A1FB4ED0087EC30 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -303,7 +311,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		3312D5F319EEDB5A00E70B17 /* Debug */ = {
+		33451D231A1FB4ED0087EC30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -341,7 +349,7 @@
 			};
 			name = Debug;
 		};
-		3312D5F419EEDB5A00E70B17 /* Release */ = {
+		33451D241A1FB4ED0087EC30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -373,7 +381,7 @@
 			};
 			name = Release;
 		};
-		3312D5F619EEDB5A00E70B17 /* Debug */ = {
+		33451D261A1FB4ED0087EC30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -386,7 +394,7 @@
 			};
 			name = Debug;
 		};
-		3312D5F719EEDB5A00E70B17 /* Release */ = {
+		33451D271A1FB4ED0087EC30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -399,7 +407,7 @@
 			};
 			name = Release;
 		};
-		3312D5F919EEDB5A00E70B17 /* Debug */ = {
+		33451D291A1FB4ED0087EC30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/McDistance.app/McDistance";
@@ -421,7 +429,7 @@
 			};
 			name = Debug;
 		};
-		3312D5FA19EEDB5A00E70B17 /* Release */ = {
+		33451D2A1A1FB4ED0087EC30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/McDistance.app/McDistance";
@@ -442,34 +450,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3312D5C419EEDB5A00E70B17 /* Build configuration list for PBXProject "McDistance" */ = {
+		33451CF41A1FB4ED0087EC30 /* Build configuration list for PBXProject "McDistance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3312D5F319EEDB5A00E70B17 /* Debug */,
-				3312D5F419EEDB5A00E70B17 /* Release */,
+				33451D231A1FB4ED0087EC30 /* Debug */,
+				33451D241A1FB4ED0087EC30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3312D5F519EEDB5A00E70B17 /* Build configuration list for PBXNativeTarget "McDistance" */ = {
+		33451D251A1FB4ED0087EC30 /* Build configuration list for PBXNativeTarget "McDistance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3312D5F619EEDB5A00E70B17 /* Debug */,
-				3312D5F719EEDB5A00E70B17 /* Release */,
+				33451D261A1FB4ED0087EC30 /* Debug */,
+				33451D271A1FB4ED0087EC30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3312D5F819EEDB5A00E70B17 /* Build configuration list for PBXNativeTarget "McDistanceTests" */ = {
+		33451D281A1FB4ED0087EC30 /* Build configuration list for PBXNativeTarget "McDistanceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3312D5F919EEDB5A00E70B17 /* Debug */,
-				3312D5FA19EEDB5A00E70B17 /* Release */,
+				33451D291A1FB4ED0087EC30 /* Debug */,
+				33451D2A1A1FB4ED0087EC30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 3312D5C119EEDB5A00E70B17 /* Project object */;
+	rootObject = 33451CF11A1FB4ED0087EC30 /* Project object */;
 }

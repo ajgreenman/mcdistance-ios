@@ -2,8 +2,8 @@
 //  McDistanceTests.m
 //  McDistanceTests
 //
-//  Created by X Code User on 10/15/14.
-//  Copyright (c) 2014 Cherry Capital Mobile. All rights reserved.
+//  Created by X Code User on 11/21/14.
+//  Copyright (c) 2014 com.andrewjgreenman. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

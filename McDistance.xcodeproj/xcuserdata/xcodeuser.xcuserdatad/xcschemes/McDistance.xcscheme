@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3312D5C819EEDB5A00E70B17"
+               BlueprintIdentifier = "33451CF81A1FB4ED0087EC30"
                BuildableName = "McDistance.app"
                BlueprintName = "McDistance"
                ReferencedContainer = "container:McDistance.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3312D5E319EEDB5A00E70B17"
+               BlueprintIdentifier = "33451D131A1FB4ED0087EC30"
                BuildableName = "McDistanceTests.xctest"
                BlueprintName = "McDistanceTests"
                ReferencedContainer = "container:McDistance.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3312D5C819EEDB5A00E70B17"
+            BlueprintIdentifier = "33451CF81A1FB4ED0087EC30"
             BuildableName = "McDistance.app"
             BlueprintName = "McDistance"
             ReferencedContainer = "container:McDistance.xcodeproj">
@@ -61,7 +61,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3312D5C819EEDB5A00E70B17"
+            BlueprintIdentifier = "33451CF81A1FB4ED0087EC30"
             BuildableName = "McDistance.app"
             BlueprintName = "McDistance"
             ReferencedContainer = "container:McDistance.xcodeproj">
@@ -79,7 +79,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3312D5C819EEDB5A00E70B17"
+            BlueprintIdentifier = "33451CF81A1FB4ED0087EC30"
             BuildableName = "McDistance.app"
             BlueprintName = "McDistance"
             ReferencedContainer = "container:McDistance.xcodeproj">
