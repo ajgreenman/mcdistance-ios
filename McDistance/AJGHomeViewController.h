@@ -11,4 +11,7 @@
 
 @interface AJGHomeViewController : UIViewController <CLLocationManagerDelegate>
 
+@property (nonatomic) double distanceInMeters;
+@property (nonatomic) int mcDistance;
+
 @end
