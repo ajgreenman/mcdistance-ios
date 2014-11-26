@@ -27,6 +27,7 @@
 + (instancetype) sharedManager
 {
     static AJGShareLocations *sharedSingleton;
+    NSLog(@"what");
     
     if(!sharedSingleton) {
         static dispatch_once_t predicate;
@@ -36,6 +37,22 @@
     }
     
     return sharedSingleton;
+}
+
+#pragma mark CLLocationManagerDelegate
+
+-(void) locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager {
+    NSLog(@"Yay!");
+}
+
+- (void) locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager  {
+    NSLog(@"Yay!");
+}
+
+- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    NSLog(@"%@", self.locationManager.location);
+    
 }
 
 @end

@@ -8,9 +8,12 @@
 
 #import "AJGHomeViewController.h"
 #import "AJGDirectionsViewController.h"
+#import "AJGHttpCommunicator.h"
 #import "AJGShareLocations.h"
 
-@interface AJGHomeViewController ()
+@interface AJGHomeViewController () {
+    AJGHttpCommunicator *http;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *mcDistanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mcConversionLabel;
@@ -21,7 +24,6 @@
 @property (strong, nonatomic) CLLocationManager *locManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) CLLocation *nearestMcDonalds;
-
 @end
 
 @implementation AJGHomeViewController
@@ -37,6 +39,8 @@ static double minimum_distance = 100.0;
         
         [self addObserver:self.locManager.location forKeyPath:@"location" options:NSKeyValueObservingOptionNew context:NULL];
         
+        [self.locManager startUpdatingLocation];
+        
         self.distanceInMeters = -1;
         self.mcDistance = 1;
     }
@@ -47,8 +51,6 @@ static double minimum_distance = 100.0;
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self.locManager startUpdatingLocation];
     
     [self updateUI];
 }
@@ -61,6 +63,7 @@ static double minimum_distance = 100.0;
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+    
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     
     if([keyPath isEqualToString:@"location"]) {
@@ -72,13 +75,29 @@ static double minimum_distance = 100.0;
 {
     self.currentLocation = location;
     
+    NSLog(@"what!!");
+    
     [self updateUI];
+}
+- (IBAction)getLocation:(id)sender {
+    NSLog(@"%@", self.locManager.location);
 }
 
 - (void) updateUI
 {
     if(self.currentLocation) {
-        
+        http = [[AJGHttpCommunicator alloc] init];
+        NSString *apiCall = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&types=food|restaurant&name=McDonald's&rankby=distance&key=AIzaSyBS5rTDOXDQ6sXYBDTyGYUjQpLTe1i90is",
+                             self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude];
+        NSURL *url = [NSURL URLWithString:apiCall];
+        [http retrieveUrl:url successBlock:^(NSData *response) {
+            NSError *error = nil;
+            NSDictionary *data = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];
+            
+            if(!error) {
+                NSLog(@"%@", data);
+            }
+        }];
     }
 }
 
