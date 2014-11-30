@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-@interface AJGDirectionsViewController : UIViewController
+@interface AJGDirectionsViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
+
+@property (nonatomic, strong) CLLocation *source;
+@property (nonatomic, strong) CLLocation *destination;
 
 @end

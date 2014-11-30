@@ -63,6 +63,8 @@ static double minimum_distance = 100.0;
 
 - (IBAction)getDirections:(id)sender {
     AJGDirectionsViewController *dvc = [[AJGDirectionsViewController alloc] init];
+    dvc.source = self.currentLocation;
+    dvc.destination = self.nearestMcDonalds.location;
     
     [self.navigationController pushViewController:dvc animated:YES];
 }
@@ -105,7 +107,15 @@ static double minimum_distance = 100.0;
                     
                     AJGPlace *nearestPlace = [[AJGPlace alloc] initWithLocation:nearestLocation andAddress:nearestAddress];
                     self.nearestMcDonalds = nearestPlace;
-                }                
+                } else {
+                    CLLocation *home = [[CLLocation alloc] initWithLatitude:44.763875 longitude:-85.606974];
+                    AJGPlace *homePlace = [[AJGPlace alloc] initWithLocation:home andAddress:@"710 East Front Street, Traverse City, MI 49686"];
+                    self.nearestMcDonalds = homePlace;
+                }
+            } else {
+                CLLocation *home = [[CLLocation alloc] initWithLatitude:44.763875 longitude:-85.606974];
+                AJGPlace *homePlace = [[AJGPlace alloc] initWithLocation:home andAddress:@"710 East Front Street, Traverse City, MI 49686"];
+                self.nearestMcDonalds = homePlace;
             }
         }];
         
@@ -135,6 +145,11 @@ static double minimum_distance = 100.0;
     
     [self.mcMapView removeAnnotations:self.mcMapView.annotations];
     [self.mcMapView addAnnotation:point];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
 }
 
 @end
