@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface AJGPlace : NSObject
 
-@property (nonatomic) float latitude;
-@property (nonatomic) float longitude;
+@property (nonatomic) CLLocation *location;
 @property (nonatomic, strong) NSString *address;
 
-- (instancetype) initWithLatitude:(float) latitiude withLongitude:(float) longitude withAddress: (NSString *) address;
+- (instancetype) initWithLocation:(CLLocation *) location andAddress:(NSString *) address;
 
 @end

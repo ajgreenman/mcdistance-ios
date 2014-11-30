@@ -10,13 +10,12 @@
 
 @implementation AJGPlace
 
-- (instancetype) initWithLatitude:(float) latitiude withLongitude:(float) longitude withAddress: (NSString *) address
+- (instancetype) initWithLocation:(CLLocation *) location andAddress:(NSString *) address
 {
     self = [super init];
     
     if(self) {
-        self.latitude = latitiude;
-        self.longitude = longitude;
+        self.location = location;
         self.address = address;
     }
     

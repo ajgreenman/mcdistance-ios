@@ -24,7 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *mcSettingsButton;
 @property (strong, nonatomic) CLLocationManager *locManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
-@property (strong, nonatomic) CLLocation *nearestMcDonalds;
+@property (strong, nonatomic) AJGPlace *nearestMcDonalds;
+
 @end
 
 @implementation AJGHomeViewController
@@ -77,19 +78,44 @@ static double minimum_distance = 100.0;
 {
     if(self.currentLocation) {
         http = [[AJGHttpCommunicator alloc] init];
+        
         NSString *apiCall = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&types=food|restaurant&name=McDonald's&rankby=distance&key=AIzaSyBS5rTDOXDQ6sXYBDTyGYUjQpLTe1i90is",
                              self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude];
         apiCall = [apiCall stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSURL *url = [NSURL URLWithString:apiCall];
-        NSLog(@"%@", apiCall);
+        
         [http retrieveUrl:url successBlock:^(NSData *response) {
             NSError *error = nil;
             NSDictionary *data = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];
             
             if(!error) {
+                NSArray *results = data[@"results"];
+                NSDictionary *nearest = results[0];
+                NSDictionary *coordinates = nearest[@"geometry"][@"location"];
                 
+                double latitude = [coordinates[@"lat"] doubleValue];
+                double longitude = [coordinates[@"lng"] doubleValue];
+                
+                CLLocation *nearestLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+                NSString *nearestAddress = nearest[@"address"];
+                
+                AJGPlace *nearestPlace = [[AJGPlace alloc] initWithLocation:nearestLocation andAddress:nearestAddress];
+                self.nearestMcDonalds = nearestPlace;
             }
         }];
+        
+        if(self.nearestMcDonalds) {
+            self.distanceInMeters = [self.nearestMcDonalds.location distanceFromLocation:self.currentLocation];
+            
+            if(self.distanceInMeters <= minimum_distance) {
+                self.mcDistance = 0;
+            } else {
+                self.mcDistance = 1;
+            }
+            
+            self.mcDistanceLabel.text = [NSString stringWithFormat:@"McDistance: %d", self.mcDistance];
+            self.mcConversionLabel.text = [NSString stringWithFormat:@"Meters: %lf", self.distanceInMeters];
+        }
     }
 }
 
