@@ -10,6 +10,7 @@
 #import "AJGDirectionsViewController.h"
 #import "AJGHttpCommunicator.h"
 #import "AJGShareLocations.h"
+#import "AJGPlace.h"
 
 @interface AJGHomeViewController () {
     AJGHttpCommunicator *http;
@@ -86,7 +87,7 @@ static double minimum_distance = 100.0;
             NSDictionary *data = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];
             
             if(!error) {
-                NSLog(@"%@", data);
+                
             }
         }];
     }
