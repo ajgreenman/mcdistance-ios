@@ -37,9 +37,9 @@ static double minimum_distance = 100.0;
     if (self) {
         self.locManager = [AJGShareLocations sharedManager].locationManager;
         
-        [self addObserver:self.locManager.location forKeyPath:@"location" options:NSKeyValueObservingOptionNew context:NULL];
-        
         [self.locManager startUpdatingLocation];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLocation:) name:@"newLocationNotification" object:nil];
         
         self.distanceInMeters = -1;
         self.mcDistance = 1;
@@ -61,26 +61,15 @@ static double minimum_distance = 100.0;
     [self.navigationController pushViewController:dvc animated:YES];
 }
 
-- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+- (void) updateLocation: (NSNotification *) notification
 {
-    
-    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    
-    if([keyPath isEqualToString:@"location"]) {
-        [self newLocation:object];
-    }
-}
+    CLLocation *location = [[notification userInfo] valueForKey:@"newLocationResult"];
 
-- (void) newLocation:(CLLocation *) location
-{
     self.currentLocation = location;
     
-    NSLog(@"what!!");
+    NSLog(@"%f, %f", location.coordinate.latitude, location.coordinate.longitude);
     
     [self updateUI];
-}
-- (IBAction)getLocation:(id)sender {
-    NSLog(@"%@", self.locManager.location);
 }
 
 - (void) updateUI
@@ -89,7 +78,9 @@ static double minimum_distance = 100.0;
         http = [[AJGHttpCommunicator alloc] init];
         NSString *apiCall = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&types=food|restaurant&name=McDonald's&rankby=distance&key=AIzaSyBS5rTDOXDQ6sXYBDTyGYUjQpLTe1i90is",
                              self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude];
+        apiCall = [apiCall stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSURL *url = [NSURL URLWithString:apiCall];
+        NSLog(@"%@", apiCall);
         [http retrieveUrl:url successBlock:^(NSData *response) {
             NSError *error = nil;
             NSDictionary *data = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];

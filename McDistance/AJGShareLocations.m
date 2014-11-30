@@ -7,6 +7,7 @@
 //
 
 #import "AJGShareLocations.h"
+#import "AJGHomeViewController.h"
 
 @implementation AJGShareLocations
 
@@ -17,8 +18,11 @@
     if(self) {
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-        self.locationManager.distanceFilter = 100.0f;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        NSLog(@"Hiksdf");
+        self.activeViews = [[NSMutableArray alloc] init];
+        NSLog(@"Hiksdf");
+        NSLog(@"Hiksdf");
     }
     
     return self;
@@ -51,8 +55,9 @@
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"%@", self.locationManager.location);
+    CLLocation *location = [locations lastObject];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"newLocationNotification" object:self userInfo:[NSDictionary dictionaryWithObject:location forKey:@"newLocationResult"]];
 }
 
 @end

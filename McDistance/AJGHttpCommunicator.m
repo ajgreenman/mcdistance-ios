@@ -25,6 +25,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
+    
     NSURLSessionTask *task = [session downloadTaskWithRequest:request];
     [task resume];
 }

@@ -73,9 +73,6 @@
                         <color key="titleColor" red="1" green="1" blue="0.94200478830000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="getLocation:" destination="-1" eventType="touchUpInside" id="vdC-59-AMV"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFn-Kv-CfQ">
                     <rect key="frame" x="20" y="513" width="280" height="35"/>

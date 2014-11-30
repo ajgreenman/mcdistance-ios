@@ -12,6 +12,7 @@
 @interface AJGShareLocations : NSObject <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) NSMutableArray *activeViews;
 
 + (instancetype) sharedManager;
 
