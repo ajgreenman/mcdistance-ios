@@ -10,6 +10,7 @@
                 <outlet property="mcConversionLabel" destination="0pA-HK-wOM" id="mxj-1L-dBU"/>
                 <outlet property="mcDirectionsButton" destination="Sn5-cV-L7j" id="RZ6-j6-y6F"/>
                 <outlet property="mcDistanceLabel" destination="s7r-AM-M3x" id="uXc-lW-HNs"/>
+                <outlet property="mcMapView" destination="MsY-w3-XOD" id="tja-fC-rQ1"/>
                 <outlet property="mcMeetupButton" destination="Vq7-MF-l65" id="QU2-AH-Fze"/>
                 <outlet property="mcSettingsButton" destination="hFn-Kv-CfQ" id="UPR-N6-oA4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

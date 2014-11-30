@@ -19,10 +19,7 @@
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        NSLog(@"Hiksdf");
         self.activeViews = [[NSMutableArray alloc] init];
-        NSLog(@"Hiksdf");
-        NSLog(@"Hiksdf");
     }
     
     return self;
@@ -31,7 +28,6 @@
 + (instancetype) sharedManager
 {
     static AJGShareLocations *sharedSingleton;
-    NSLog(@"what");
     
     if(!sharedSingleton) {
         static dispatch_once_t predicate;
@@ -46,11 +42,11 @@
 #pragma mark CLLocationManagerDelegate
 
 -(void) locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager {
-    NSLog(@"Yay!");
+    
 }
 
 - (void) locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager  {
-    NSLog(@"Yay!");
+    
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations

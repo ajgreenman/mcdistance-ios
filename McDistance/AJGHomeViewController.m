@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *mcDirectionsButton;
 @property (weak, nonatomic) IBOutlet UIButton *mcMeetupButton;
 @property (weak, nonatomic) IBOutlet UIButton *mcSettingsButton;
+@property (weak, nonatomic) IBOutlet MKMapView *mcMapView;
 @property (strong, nonatomic) CLLocationManager *locManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) AJGPlace *nearestMcDonalds;
@@ -54,6 +55,9 @@ static double minimum_distance = 100.0;
 {
     [super viewDidLoad];
     
+    self.mcMapView.showsUserLocation = YES;
+    self.mcMapView.delegate = self;
+    
     [self updateUI];
 }
 
@@ -68,8 +72,6 @@ static double minimum_distance = 100.0;
     CLLocation *location = [[notification userInfo] valueForKey:@"newLocationResult"];
 
     self.currentLocation = location;
-    
-    NSLog(@"%f, %f", location.coordinate.latitude, location.coordinate.longitude);
     
     [self updateUI];
 }
@@ -90,17 +92,20 @@ static double minimum_distance = 100.0;
             
             if(!error) {
                 NSArray *results = data[@"results"];
-                NSDictionary *nearest = results[0];
-                NSDictionary *coordinates = nearest[@"geometry"][@"location"];
                 
-                double latitude = [coordinates[@"lat"] doubleValue];
-                double longitude = [coordinates[@"lng"] doubleValue];
-                
-                CLLocation *nearestLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
-                NSString *nearestAddress = nearest[@"address"];
-                
-                AJGPlace *nearestPlace = [[AJGPlace alloc] initWithLocation:nearestLocation andAddress:nearestAddress];
-                self.nearestMcDonalds = nearestPlace;
+                if(results.count > 0) {
+                    NSDictionary *nearest = results[0];
+                    NSDictionary *coordinates = nearest[@"geometry"][@"location"];
+                    
+                    double latitude = [coordinates[@"lat"] doubleValue];
+                    double longitude = [coordinates[@"lng"] doubleValue];
+                    
+                    CLLocation *nearestLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+                    NSString *nearestAddress = nearest[@"address"];
+                    
+                    AJGPlace *nearestPlace = [[AJGPlace alloc] initWithLocation:nearestLocation andAddress:nearestAddress];
+                    self.nearestMcDonalds = nearestPlace;
+                }                
             }
         }];
         
@@ -117,6 +122,19 @@ static double minimum_distance = 100.0;
             self.mcConversionLabel.text = [NSString stringWithFormat:@"Meters: %lf", self.distanceInMeters];
         }
     }
+}
+
+- (void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    double span = self.distanceInMeters * 2 + 20.0;
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, span, span);
+    [self.mcMapView setRegion:[self.mcMapView regionThatFits:region] animated:YES];
+    
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    point.coordinate = self.nearestMcDonalds.location.coordinate;
+    
+    [self.mcMapView removeAnnotations:self.mcMapView.annotations];
+    [self.mcMapView addAnnotation:point];
 }
 
 @end

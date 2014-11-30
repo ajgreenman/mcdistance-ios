@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-@interface AJGHomeViewController : UIViewController <CLLocationManagerDelegate>
+@interface AJGHomeViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (nonatomic) double distanceInMeters;
 @property (nonatomic) int mcDistance;
