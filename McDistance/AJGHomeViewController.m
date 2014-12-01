@@ -8,6 +8,7 @@
 
 #import "AJGHomeViewController.h"
 #import "AJGDirectionsViewController.h"
+#import "AJGSettingsViewController.h"
 #import "AJGHttpCommunicator.h"
 #import "AJGShareLocations.h"
 #import "AJGPlace.h"
@@ -26,12 +27,11 @@
 @property (strong, nonatomic) CLLocationManager *locManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) AJGPlace *nearestMcDonalds;
+@property (nonatomic) double minimum_distance;
 
 @end
 
 @implementation AJGHomeViewController
-
-static double minimum_distance = 100.0;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,6 +46,7 @@ static double minimum_distance = 100.0;
         
         self.distanceInMeters = -1;
         self.mcDistance = 1;
+        self.minimum_distance = 50.0;
     }
     
     return self;
@@ -67,6 +68,12 @@ static double minimum_distance = 100.0;
     dvc.destination = self.nearestMcDonalds.location;
     
     [self.navigationController pushViewController:dvc animated:YES];
+}
+
+- (IBAction)settings:(id)sender {
+    AJGSettingsViewController *svc = [[AJGSettingsViewController alloc] init];
+    
+    [self.navigationController pushViewController:svc animated:YES];
 }
 
 - (void) updateLocation: (NSNotification *) notification
@@ -122,7 +129,7 @@ static double minimum_distance = 100.0;
         if(self.nearestMcDonalds) {
             self.distanceInMeters = [self.nearestMcDonalds.location distanceFromLocation:self.currentLocation];
             
-            if(self.distanceInMeters <= minimum_distance) {
+            if(self.distanceInMeters <= self.minimum_distance) {
                 self.mcDistance = 0;
             } else {
                 self.mcDistance = 1;
@@ -145,11 +152,6 @@ static double minimum_distance = 100.0;
     
     [self.mcMapView removeAnnotations:self.mcMapView.annotations];
     [self.mcMapView addAnnotation:point];
-}
-
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    
 }
 
 @end

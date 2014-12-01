@@ -39,6 +39,21 @@
     self.mcMapView.showsUserLocation = YES;
     self.mcMapView.delegate = self;
     
+    [self updateMap];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+- (void) updateLocation: (NSNotification *) notification
+{
+    [self updateMap];
+}
+
+- (void) updateMap
+{
     MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
     point.coordinate = self.destination.coordinate;
     [self.mcMapView addAnnotation:point];
@@ -54,21 +69,13 @@
     MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
     [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
         if(!error) {
+            [self.mcMapView removeOverlays:self.mcMapView.overlays];
+            
             for(MKRoute *route in [response routes]) {
                 [self.mcMapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads];
             }
         }
     }];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-- (void) updateLocation: (NSNotification *) notification
-{
-    
 }
 
 - (MKOverlayRenderer *) mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
