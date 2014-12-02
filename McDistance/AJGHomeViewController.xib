@@ -76,16 +76,16 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFn-Kv-CfQ">
-                    <rect key="frame" x="20" y="513" width="280" height="35"/>
+                    <rect key="frame" x="20" y="513" width="280" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.84705882352941175" green="0.0" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="McSettings">
+                    <state key="normal" title="McTweet">
                         <color key="titleColor" red="1" green="1" blue="0.94200478830000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="settings:" destination="-1" eventType="touchUpInside" id="JGQ-o9-rzQ"/>
+                        <action selector="tweetMcDistance:" destination="-1" eventType="touchUpInside" id="cA3-Aa-AIJ"/>
                     </connections>
                 </button>
                 <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eLr-0L-CFO">

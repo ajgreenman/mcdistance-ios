@@ -8,6 +8,7 @@
 
 #import "AJGHomeViewController.h"
 #import "AJGDirectionsViewController.h"
+#import "AJGTweetViewController.h"
 #import "AJGSettingsViewController.h"
 #import "AJGHttpCommunicator.h"
 #import "AJGShareLocations.h"
@@ -69,10 +70,12 @@
     [self.navigationController pushViewController:dvc animated:YES];
 }
 
-- (IBAction)settings:(id)sender {
-    AJGSettingsViewController *svc = [[AJGSettingsViewController alloc] init];
+- (IBAction)tweetMcDistance:(id)sender {
+    AJGTweetViewController *tvc = [[AJGTweetViewController alloc] init];
+    tvc.mcDistance = self.mcDistance;
+    tvc.units = self.distanceInMeters;
     
-    [self.navigationController pushViewController:svc animated:YES];
+    [self.navigationController pushViewController:tvc animated:YES];
 }
 
 - (void) updateLocation: (NSNotification *) notification
