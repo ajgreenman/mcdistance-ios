@@ -55,12 +55,14 @@
 - (void) updateMap
 {
     MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    point.coordinate = self.destination.coordinate;
+    point.coordinate = self.destination.location.coordinate;
+    point.title = @"Nearest McDonald's";
+    point.subtitle = self.destination.address;
     [self.mcMapView addAnnotation:point];
     
     MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
     [request setSource:[MKMapItem mapItemForCurrentLocation]];
-    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:self.destination.coordinate addressDictionary:nil];
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:self.destination.location.coordinate addressDictionary:nil];
     MKMapItem *item = [[MKMapItem alloc] initWithPlacemark:placemark];
     [request setDestination:item];
     [request setTransportType:MKDirectionsTransportTypeAny];
@@ -88,6 +90,43 @@
     }
     
     return nil;
+}
+
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    if([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+    
+    MKPinAnnotationView *pinView = nil;
+    if([annotation isKindOfClass:[MKPointAnnotation class]]) {
+        pinView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinView"];
+        
+        if(!pinView) {
+            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinView"];
+            pinView.canShowCallout = YES;
+            pinView.pinColor = MKPinAnnotationColorRed;
+            pinView.animatesDrop = YES;
+        } else {
+            pinView.annotation = annotation;
+        }
+    }
+        
+        pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        
+        UIImageView *iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Logo"]];
+        pinView.leftCalloutAccessoryView = iconView;
+    
+    return pinView;
+}
+
+- (void) mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    id <MKAnnotation> annotation = [view annotation];
+    if([annotation isKindOfClass:[MKPointAnnotation class]]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Disclosure Pressed" message:@"Click cancel!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+        [alertView show];
+    }
 }
 
 @end

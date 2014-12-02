@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "AJGPlace.h"
 
-@interface AJGDirectionsViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
+@interface AJGDirectionsViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, UIAlertViewDelegate>
 
-@property (nonatomic, strong) CLLocation *source;
-@property (nonatomic, strong) CLLocation *destination;
+@property (nonatomic, strong) AJGPlace *destination;
 
 @end

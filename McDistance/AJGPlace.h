@@ -13,7 +13,12 @@
 
 @property (nonatomic) CLLocation *location;
 @property (nonatomic, strong) NSString *address;
+@property (nonatomic) Boolean open;
+@property (nonatomic) double rating;
 
-- (instancetype) initWithLocation:(CLLocation *) location andAddress:(NSString *) address;
+- (instancetype) initWithLocation:(CLLocation *) location
+                       andAddress:(NSString *) address
+                        andRating:(double) rating
+                           isOpen:(Boolean) open;
 
 @end

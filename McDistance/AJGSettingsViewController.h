@@ -10,10 +10,12 @@
 
 @interface AJGSettingsViewController : UIViewController
 
-enum Level {HIGH, MEDIUM, LOW} typedef Level;
+enum {HIGH, MEDIUM, LOW} typedef Level;
+enum {FEET, METERS, KILOMETERS, MILES} typedef Units;
 
 @property (nonatomic) float minimum_distance;
 @property (nonatomic) Level accuracy;
 @property (nonatomic) Level precision;
+@property (nonatomic) Units units;
 
 @end

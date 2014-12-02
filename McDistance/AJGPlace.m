@@ -10,13 +10,18 @@
 
 @implementation AJGPlace
 
-- (instancetype) initWithLocation:(CLLocation *) location andAddress:(NSString *) address
+- (instancetype) initWithLocation:(CLLocation *) location
+                       andAddress:(NSString *) address
+                        andRating:(double) rating
+                           isOpen:(Boolean) open
 {
     self = [super init];
     
     if(self) {
         self.location = location;
         self.address = address;
+        self.rating = rating;
+        self.open = open;
     }
     
     return self;

@@ -64,8 +64,7 @@
 
 - (IBAction)getDirections:(id)sender {
     AJGDirectionsViewController *dvc = [[AJGDirectionsViewController alloc] init];
-    dvc.source = self.currentLocation;
-    dvc.destination = self.nearestMcDonalds.location;
+    dvc.destination = self.nearestMcDonalds;
     
     [self.navigationController pushViewController:dvc animated:YES];
 }
@@ -112,16 +111,20 @@
                     CLLocation *nearestLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
                     NSString *nearestAddress = nearest[@"address"];
                     
-                    AJGPlace *nearestPlace = [[AJGPlace alloc] initWithLocation:nearestLocation andAddress:nearestAddress];
+                    double rating = [nearest[@"rating"] doubleValue];
+                    
+                    Boolean isOpen = (Boolean) nearest[@"opening_hours"][@"open_now"];
+                    
+                    AJGPlace *nearestPlace = [[AJGPlace alloc] initWithLocation:nearestLocation andAddress:nearestAddress andRating:rating isOpen:isOpen];
                     self.nearestMcDonalds = nearestPlace;
                 } else {
-                    CLLocation *home = [[CLLocation alloc] initWithLatitude:44.763875 longitude:-85.606974];
-                    AJGPlace *homePlace = [[AJGPlace alloc] initWithLocation:home andAddress:@"710 East Front Street, Traverse City, MI 49686"];
+                    CLLocation *home = [[CLLocation alloc] initWithLatitude:44.763834 longitude:-85.606947];
+                    AJGPlace *homePlace = [[AJGPlace alloc] initWithLocation:home andAddress:@"710 East Front Street, Traverse City, MI 49686" andRating:3.2 isOpen:YES];
                     self.nearestMcDonalds = homePlace;
                 }
             } else {
                 CLLocation *home = [[CLLocation alloc] initWithLatitude:44.763875 longitude:-85.606974];
-                AJGPlace *homePlace = [[AJGPlace alloc] initWithLocation:home andAddress:@"710 East Front Street, Traverse City, MI 49686"];
+                AJGPlace *homePlace = [[AJGPlace alloc] initWithLocation:home andAddress:@"710 East Front Street, Traverse City, MI 49686" andRating:3.2 isOpen:YES];
                 self.nearestMcDonalds = homePlace;
             }
         }];
