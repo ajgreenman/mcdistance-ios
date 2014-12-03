@@ -8,7 +8,7 @@
 
 #import "AJGHomeViewController.h"
 #import "AJGDirectionsViewController.h"
-#import "AJGTweetViewController.h"
+#import "AJGAccountsViewController.h"
 #import "AJGSettingsViewController.h"
 #import "AJGHttpCommunicator.h"
 #import "AJGShareLocations.h"
@@ -71,11 +71,11 @@
 }
 
 - (IBAction)tweetMcDistance:(id)sender {
-    AJGTweetViewController *tvc = [[AJGTweetViewController alloc] init];
-    tvc.mcDistance = self.mcDistance;
-    tvc.units = self.distanceInMeters;
+    AJGAccountsViewController *avc = [[AJGAccountsViewController alloc] init];
+    avc.mcDistance = self.mcDistance;
+    avc.units = self.distanceInMeters;
     
-    [self.navigationController pushViewController:tvc animated:YES];
+    [self.navigationController pushViewController:avc animated:YES];
 }
 
 - (void) updateLocation: (NSNotification *) notification
@@ -150,6 +150,9 @@
 - (void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     double span = self.distanceInMeters * 2 + 20.0;
+    if(!span || span < 0) {
+        span = 1000.0;
+    }
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, span, span);
     [self.mcMapView setRegion:[self.mcMapView regionThatFits:region] animated:YES];
     
