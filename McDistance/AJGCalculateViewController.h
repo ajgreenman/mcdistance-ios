@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "AJGPlace.h"
 
 @interface AJGCalculateViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
 
@@ -19,8 +20,8 @@
 @property (nonatomic) double mcDistanceAway;
 @property (nonatomic) double distanceAway;
 @property (nonatomic) CLLocation *currentLocation;
-@property (nonatomic) CLLocation *currentMcLocation;
+@property (nonatomic) AJGPlace *currentMcLocation;
 @property (nonatomic) CLLocation *otherLocation;
-@property (nonatomic) CLLocation *otherMcLocation;
+@property (nonatomic) AJGPlace *otherMcLocation;
 
 @end

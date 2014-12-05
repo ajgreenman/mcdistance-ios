@@ -68,6 +68,8 @@
     AJGCalculateViewController *cvc = [[AJGCalculateViewController alloc] init];
     cvc.selfDistance = self.distanceInMeters;
     cvc.selfMcDistance = self.mcDistance;
+    cvc.currentMcLocation = self.nearestMcDonalds;
+    cvc.currentLocation = self.currentLocation;
     
     [self.navigationController pushViewController:cvc animated:YES];
 }
@@ -80,20 +82,12 @@
 }
 
 - (IBAction)tweetMcDistance:(id)sender {
-    
-    
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
         SLComposeViewController *view = [SLComposeViewController
                                          composeViewControllerForServiceType:SLServiceTypeTwitter];
         [view setInitialText:self.tweetMessage];
         [self presentViewController:view animated:YES completion:^{}];
     }
-    
-//    AJGAccountsViewController *avc = [[AJGAccountsViewController alloc] init];
-//    avc.mcDistance = self.mcDistance;
-//    avc.units = self.distanceInMeters;
-//    
-//    [self.navigationController pushViewController:avc animated:YES];
 }
 
 - (void) updateLocation: (NSNotification *) notification
@@ -107,48 +101,10 @@
 
 - (void) updateUI
 {
+    NSLog(@"Woo");
     if(self.currentLocation) {
-        http = [[AJGHttpCommunicator alloc] init];
         
-        NSString *apiCall = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&types=food|restaurant&name=McDonald's&rankby=distance&key=AIzaSyBS5rTDOXDQ6sXYBDTyGYUjQpLTe1i90is",
-                             self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude];
-        apiCall = [apiCall stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSURL *url = [NSURL URLWithString:apiCall];
-        
-        [http retrieveUrl:url successBlock:^(NSData *response) {
-            NSError *error = nil;
-            NSDictionary *data = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];
-            
-            if(!error) {
-                NSArray *results = data[@"results"];
-                
-                if(results.count > 0) {
-                    NSDictionary *nearest = results[0];
-                    NSDictionary *coordinates = nearest[@"geometry"][@"location"];
-                    
-                    double latitude = [coordinates[@"lat"] doubleValue];
-                    double longitude = [coordinates[@"lng"] doubleValue];
-                    
-                    CLLocation *nearestLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
-                    NSString *nearestAddress = nearest[@"address"];
-                    
-                    double rating = [nearest[@"rating"] doubleValue];
-                    
-                    Boolean isOpen = (Boolean) nearest[@"opening_hours"][@"open_now"];
-                    
-                    AJGPlace *nearestPlace = [[AJGPlace alloc] initWithLocation:nearestLocation andAddress:nearestAddress andRating:rating isOpen:isOpen];
-                    self.nearestMcDonalds = nearestPlace;
-                } else {
-                    CLLocation *home = [[CLLocation alloc] initWithLatitude:44.763834 longitude:-85.606947];
-                    AJGPlace *homePlace = [[AJGPlace alloc] initWithLocation:home andAddress:@"710 East Front Street, Traverse City, MI 49686" andRating:3.2 isOpen:YES];
-                    self.nearestMcDonalds = homePlace;
-                }
-            } else {
-                CLLocation *home = [[CLLocation alloc] initWithLatitude:44.763875 longitude:-85.606974];
-                AJGPlace *homePlace = [[AJGPlace alloc] initWithLocation:home andAddress:@"710 East Front Street, Traverse City, MI 49686" andRating:3.2 isOpen:YES];
-                self.nearestMcDonalds = homePlace;
-            }
-        }];
+        [self fetchPlace:self.currentLocation];
         
         if(self.nearestMcDonalds) {
             self.distanceInMeters = [self.nearestMcDonalds.location distanceFromLocation:self.currentLocation];
@@ -171,12 +127,57 @@
     }
 }
 
+- (void) fetchPlace:(CLLocation *) location
+{
+    http = [[AJGHttpCommunicator alloc] init];
+    
+    NSString *apiCall = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&types=food|restaurant&name=McDonald's&rankby=distance&key=AIzaSyBS5rTDOXDQ6sXYBDTyGYUjQpLTe1i90is",
+                         self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude];
+    apiCall = [apiCall stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:apiCall];
+    
+    [http retrieveUrl:url successBlock:^(NSData *response) {
+        NSError *error = nil;
+        NSDictionary *data = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];
+        
+        if(!error) {
+            NSArray *results = data[@"results"];
+            
+            if(results.count > 0) {
+                NSDictionary *nearest = results[0];
+                NSDictionary *coordinates = nearest[@"geometry"][@"location"];
+                
+                double latitude = [coordinates[@"lat"] doubleValue];
+                double longitude = [coordinates[@"lng"] doubleValue];
+                
+                CLLocation *nearestLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+                NSString *nearestAddress = nearest[@"address"];
+                
+                double rating = [nearest[@"rating"] doubleValue];
+                
+                Boolean isOpen = (Boolean) nearest[@"opening_hours"][@"open_now"];
+                
+                AJGPlace *nearestPlace = [[AJGPlace alloc] initWithLocation:nearestLocation andAddress:nearestAddress andRating:rating isOpen:isOpen];
+                self.nearestMcDonalds = nearestPlace;
+            }
+        }
+        
+        if(!self.nearestMcDonalds) {
+            CLLocation *home = [[CLLocation alloc] initWithLatitude:44.763875 longitude:-85.606974];
+            AJGPlace *homePlace = [[AJGPlace alloc] initWithLocation:home andAddress:@"710 East Front Street, Traverse City, MI 49686" andRating:3.2 isOpen:YES];
+            self.nearestMcDonalds = homePlace;
+        }
+    }];
+}
+
 - (void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     double span = self.distanceInMeters * 2 + 20.0;
+    
     if(!span || span < 0) {
         span = 1000.0;
     }
+    
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, span, span);
     [self.mcMapView setRegion:[self.mcMapView regionThatFits:region] animated:YES];
     
@@ -185,6 +186,8 @@
     
     [self.mcMapView removeAnnotations:self.mcMapView.annotations];
     [self.mcMapView addAnnotation:point];
+    
+    [self updateUI];
 }
 
 @end
