@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <Social/Social.h>
 #import <MapKit/MapKit.h>
 
 @interface AJGHomeViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
