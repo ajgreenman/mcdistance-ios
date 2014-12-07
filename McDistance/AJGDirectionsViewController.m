@@ -76,10 +76,8 @@
     [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
         if(!error) {
             [self.mcMapView removeOverlays:self.mcMapView.overlays];
-            
-            for(MKRoute *route in [response routes]) {
-                [self.mcMapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads];
-            }
+            MKRoute *route = [response.routes firstObject];
+            [self.mcMapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads];
         }
     }];
 }

@@ -15,5 +15,6 @@
 
 @property (nonatomic) double distanceInMeters;
 @property (nonatomic) int mcDistance;
+@property (strong, nonatomic) CLLocation *currentLocation;
 
 @end

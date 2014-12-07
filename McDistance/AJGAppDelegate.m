@@ -16,8 +16,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Override point for customization after application launch.
-    AJGHomeViewController *hvc = [[AJGHomeViewController alloc] init];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:hvc];
+    self.hvc = [[AJGHomeViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.hvc];
     self.window.rootViewController = navController;
     
     
@@ -50,7 +50,32 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    CLLocation *location = self.hvc.currentLocation;
+    
+    NSLog(@"%lf", location.coordinate.latitude);
+    
+    [self cacheLocation:location];
+}
+
+- (void) cacheLocation: (CLLocation *) location
+{
+    NSFileManager *fm = [[NSFileManager alloc] init];
+    NSError *error = nil;
+    NSURL *cache = [fm URLForDirectory:NSCachesDirectory
+                              inDomain:NSUserDomainMask
+                     appropriateForURL:nil
+                                create:YES
+                                 error:&error];
+    
+    if(!error) {
+        NSURL *locationFolder = [cache URLByAppendingPathComponent:@"location"];
+        BOOL ok = [fm createDirectoryAtURL:locationFolder withIntermediateDirectories:YES attributes:nil error:&error];
+        
+        if(ok) {
+            NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:location, nil];
+            [data writeToURL:[locationFolder URLByAppendingPathComponent:@"last_location.txt"] atomically:NO];
+        }
+    }
 }
 
 @end

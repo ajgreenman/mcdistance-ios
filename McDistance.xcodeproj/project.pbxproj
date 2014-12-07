@@ -26,8 +26,6 @@
 		33451D2E1A1FB5850087EC30 /* AJGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33451D2C1A1FB5850087EC30 /* AJGHomeViewController.m */; };
 		33451D2F1A1FB5850087EC30 /* AJGHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33451D2D1A1FB5850087EC30 /* AJGHomeViewController.xib */; };
 		33451D311A1FB9390087EC30 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33451D301A1FB9390087EC30 /* MapKit.framework */; };
-		3351933C1A2CE8A800054382 /* AJGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3351933A1A2CE8A800054382 /* AJGSettingsViewController.m */; };
-		3351933D1A2CE8A800054382 /* AJGSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3351933B1A2CE8A800054382 /* AJGSettingsViewController.xib */; };
 		337CEB451A2BB891001BBFB8 /* AJGPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 337CEB441A2BB891001BBFB8 /* AJGPlace.m */; };
 		339247951A2F7AED004F67B8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 339247941A2F7AED004F67B8 /* Settings.bundle */; };
 		33F984991A1FBA5500F6D528 /* AJGDirectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F984971A1FBA5500F6D528 /* AJGDirectionsViewController.m */; };
@@ -73,9 +71,6 @@
 		33451D2C1A1FB5850087EC30 /* AJGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJGHomeViewController.m; path = McDistance/AJGHomeViewController.m; sourceTree = "<group>"; };
 		33451D2D1A1FB5850087EC30 /* AJGHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AJGHomeViewController.xib; path = McDistance/AJGHomeViewController.xib; sourceTree = "<group>"; };
 		33451D301A1FB9390087EC30 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		335193391A2CE8A800054382 /* AJGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJGSettingsViewController.h; path = McDistance/AJGSettingsViewController.h; sourceTree = "<group>"; };
-		3351933A1A2CE8A800054382 /* AJGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJGSettingsViewController.m; path = McDistance/AJGSettingsViewController.m; sourceTree = "<group>"; };
-		3351933B1A2CE8A800054382 /* AJGSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AJGSettingsViewController.xib; path = McDistance/AJGSettingsViewController.xib; sourceTree = "<group>"; };
 		337CEB431A2BB891001BBFB8 /* AJGPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJGPlace.h; path = McDistance/AJGPlace.h; sourceTree = "<group>"; };
 		337CEB441A2BB891001BBFB8 /* AJGPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJGPlace.m; path = McDistance/AJGPlace.m; sourceTree = "<group>"; };
 		339247941A2F7AED004F67B8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -124,9 +119,6 @@
 				33451D2B1A1FB5850087EC30 /* AJGHomeViewController.h */,
 				33451D2C1A1FB5850087EC30 /* AJGHomeViewController.m */,
 				33451D2D1A1FB5850087EC30 /* AJGHomeViewController.xib */,
-				335193391A2CE8A800054382 /* AJGSettingsViewController.h */,
-				3351933A1A2CE8A800054382 /* AJGSettingsViewController.m */,
-				3351933B1A2CE8A800054382 /* AJGSettingsViewController.xib */,
 				330F09BB1A2FFDE900C9F66F /* AJGCalculateViewController.h */,
 				330F09BC1A2FFDE900C9F66F /* AJGCalculateViewController.m */,
 				330F09BD1A2FFDE900C9F66F /* AJGCalculateViewController.xib */,
@@ -279,7 +271,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				33451D071A1FB4ED0087EC30 /* InfoPlist.strings in Resources */,
-				3351933D1A2CE8A800054382 /* AJGSettingsViewController.xib in Resources */,
 				33F9849A1A1FBA5500F6D528 /* AJGDirectionsViewController.xib in Resources */,
 				330F09BF1A2FFDE900C9F66F /* AJGCalculateViewController.xib in Resources */,
 				33451D0F1A1FB4ED0087EC30 /* Images.xcassets in Resources */,
@@ -303,7 +294,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3351933C1A2CE8A800054382 /* AJGSettingsViewController.m in Sources */,
 				33451D2E1A1FB5850087EC30 /* AJGHomeViewController.m in Sources */,
 				33F984991A1FBA5500F6D528 /* AJGDirectionsViewController.m in Sources */,
 				3336AF501A23A3820086C2DC /* AJGShareLocations.m in Sources */,

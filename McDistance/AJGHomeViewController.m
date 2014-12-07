@@ -9,7 +9,6 @@
 #import "AJGHomeViewController.h"
 #import "AJGCalculateViewController.h"
 #import "AJGDirectionsViewController.h"
-#import "AJGSettingsViewController.h"
 #import "AJGHttpCommunicator.h"
 #import "AJGShareLocations.h"
 #import "AJGPlace.h"
@@ -26,7 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *mcSettingsButton;
 @property (weak, nonatomic) IBOutlet MKMapView *mcMapView;
 @property (strong, nonatomic) CLLocationManager *locManager;
-@property (strong, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) AJGPlace *nearestMcDonalds;
 @property (strong, nonatomic) NSString *tweetMessage;
 @property (nonatomic) double minimum_distance;
@@ -61,7 +59,36 @@
     self.mcMapView.showsUserLocation = YES;
     self.mcMapView.delegate = self;
     
+    [self getLastLocation];
+    
     [self updateUI];
+}
+
+- (void) getLastLocation
+{
+    NSFileManager *fm = [[NSFileManager alloc] init];
+    NSError *error = nil;
+    NSURL *cache = [fm URLForDirectory:NSCachesDirectory
+                              inDomain:NSUserDomainMask
+                     appropriateForURL:nil
+                                create:YES
+                                 error:&error];
+    
+    if(!error) {
+        NSURL *locationFolder = [cache URLByAppendingPathComponent:@"location"];
+        BOOL ok = [fm createDirectoryAtURL:locationFolder withIntermediateDirectories:YES attributes:nil error:&error];
+        if(ok) {
+            NSURL *last = [locationFolder URLByAppendingPathComponent:@"last_location.txt"];
+            NSString *contents = [NSString stringWithContentsOfURL:last encoding:NSUTF8StringEncoding error:&error];
+            NSArray *latLong = [contents componentsSeparatedByString:@", "];
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:[(NSString *)[latLong firstObject] doubleValue]
+                                                              longitude:[(NSString *) [latLong lastObject] doubleValue]];
+            
+            if(location) {
+                self.currentLocation = location;
+            }
+        }
+    }
 }
 
 - (IBAction)mcCalculate:(id)sender {
@@ -87,6 +114,9 @@
                                          composeViewControllerForServiceType:SLServiceTypeTwitter];
         [view setInitialText:self.tweetMessage];
         [self presentViewController:view animated:YES completion:^{}];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Available Accounts" message:@"You must have at least one registered Twitter account to access this feature." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
     }
 }
 
@@ -101,7 +131,6 @@
 
 - (void) updateUI
 {
-    NSLog(@"Woo");
     if(self.currentLocation) {
         
         [self fetchPlace:self.currentLocation];
