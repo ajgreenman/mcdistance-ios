@@ -11,7 +11,6 @@
 #import "AJGDirectionsViewController.h"
 #import "AJGHttpCommunicator.h"
 #import "AJGShareLocations.h"
-#import "AJGPlace.h"
 
 @interface AJGHomeViewController () {
     AJGHttpCommunicator *http;
@@ -25,13 +24,26 @@
 @property (weak, nonatomic) IBOutlet UIButton *mcSettingsButton;
 @property (weak, nonatomic) IBOutlet MKMapView *mcMapView;
 @property (strong, nonatomic) CLLocationManager *locManager;
-@property (strong, nonatomic) AJGPlace *nearestMcDonalds;
 @property (strong, nonatomic) NSString *tweetMessage;
 @property (nonatomic) double minimum_distance;
 
 @end
 
 @implementation AJGHomeViewController
+
+- (void) setNearestMcDonalds:(AJGPlace *)nearestMcDonalds
+{
+    _nearestMcDonalds = nearestMcDonalds;
+    
+    [self updateUI];
+}
+
+- (void) setCurrentLocation:(CLLocation *)currentLocation
+{
+    _currentLocation = currentLocation;
+    
+    [self fetchPlace:currentLocation];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,8 +72,6 @@
     self.mcMapView.delegate = self;
     
     [self getLastLocation];
-    
-    [self updateUI];
 }
 
 - (void) getLastLocation
@@ -125,15 +135,11 @@
     CLLocation *location = [[notification userInfo] valueForKey:@"newLocationResult"];
 
     self.currentLocation = location;
-    
-    [self updateUI];
 }
 
 - (void) updateUI
 {
     if(self.currentLocation) {
-        
-        [self fetchPlace:self.currentLocation];
         
         if(self.nearestMcDonalds) {
             self.distanceInMeters = [self.nearestMcDonalds.location distanceFromLocation:self.currentLocation];
@@ -152,6 +158,23 @@
             } else {
                 self.tweetMessage = [NSString stringWithFormat:@"My McDistance is 1! I am %lf meters away from the nearest McDonald's.", self.distanceInMeters];
             }
+            
+            double span = self.distanceInMeters * 2 + 20.0;
+            
+            if(!span || span < 0) {
+                span = 1000.0;
+            }
+            
+            MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, span, span);
+            [self.mcMapView setRegion:[self.mcMapView regionThatFits:region] animated:YES];
+            
+            MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+            point.coordinate = self.nearestMcDonalds.location.coordinate;
+            point.title = @"Nearest McDonald's";
+            point.subtitle = self.nearestMcDonalds.address;
+            
+            [self.mcMapView removeAnnotations:self.mcMapView.annotations];
+            [self.mcMapView addAnnotation:point];
         }
     }
 }
@@ -201,21 +224,6 @@
 
 - (void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    double span = self.distanceInMeters * 2 + 20.0;
-    
-    if(!span || span < 0) {
-        span = 1000.0;
-    }
-    
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, span, span);
-    [self.mcMapView setRegion:[self.mcMapView regionThatFits:region] animated:YES];
-    
-    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    point.coordinate = self.nearestMcDonalds.location.coordinate;
-    
-    [self.mcMapView removeAnnotations:self.mcMapView.annotations];
-    [self.mcMapView addAnnotation:point];
-    
     [self updateUI];
 }
 

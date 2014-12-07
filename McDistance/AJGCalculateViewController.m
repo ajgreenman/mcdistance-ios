@@ -19,6 +19,20 @@
 
 @implementation AJGCalculateViewController
 
+- (void) setOtherMcLocation:(AJGPlace *)otherMcLocation
+{
+    _otherMcLocation = otherMcLocation;
+    
+    [self updateUI];
+}
+
+- (void) setOtherLocation:(CLLocation *)otherLocation
+{
+    _otherLocation = otherLocation;
+    
+    [self fetchPlace:otherLocation];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -49,8 +63,6 @@
     CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
     
     self.otherLocation = location;
-    
-    [self fetchPlace:location];
 }
 
 - (void) fetchPlace:(CLLocation *) location 
@@ -95,18 +107,11 @@
             AJGPlace *homePlace = [[AJGPlace alloc] initWithLocation:home andAddress:@"710 East Front Street, Traverse City, MI 49686" andRating:3.2 isOpen:YES];
             self.otherMcLocation = homePlace;
         }
-        
-        [self updateUI];
     }];
 }
 
 - (void) updateUI
-{
-    NSLog(@"My Location: %lf, %lf", self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude);
-    NSLog(@"Nearest McDonald's: %lf, %lf", self.currentMcLocation.location.coordinate.latitude, self.currentMcLocation.location.coordinate.longitude);
-    NSLog(@"Point Location: %lf, %lf", self.otherLocation.coordinate.latitude, self.otherLocation.coordinate.longitude);
-    NSLog(@"Point's Nearest McDonald's: %lf, %lf", self.otherMcLocation.location.coordinate.latitude, self.otherMcLocation.location.coordinate.longitude);
-    
+{    
     double span = [self findFarthestDistance] * 2 + 20.0;
     
     if(!span || span < 0) {
@@ -146,8 +151,6 @@
 
 - (void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    
-    
     [self updateUI];
 }
 

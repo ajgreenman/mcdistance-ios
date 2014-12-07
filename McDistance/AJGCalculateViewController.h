@@ -21,7 +21,7 @@
 @property (nonatomic) double distanceAway;
 @property (nonatomic) CLLocation *currentLocation;
 @property (nonatomic) AJGPlace *currentMcLocation;
-@property (nonatomic) CLLocation *otherLocation;
-@property (nonatomic) AJGPlace *otherMcLocation;
+@property (nonatomic, readonly) CLLocation *otherLocation;
+@property (nonatomic, readonly) AJGPlace *otherMcLocation;
 
 @end

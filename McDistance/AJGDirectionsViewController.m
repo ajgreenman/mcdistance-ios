@@ -38,11 +38,6 @@
     
     self.mcMapView.showsUserLocation = YES;
     self.mcMapView.delegate = self;
-    
-    double span = [self.locManager.location distanceFromLocation:self.destination.location] * 2;
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.locManager.location.coordinate, span, span);
-    [self.mcMapView setRegion:[self.mcMapView regionThatFits:region] animated:YES];
-    
     [self updateMap];
 }
 
@@ -80,6 +75,10 @@
             [self.mcMapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads];
         }
     }];
+    
+    double span = [self.locManager.location distanceFromLocation:self.destination.location] * 2;
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.locManager.location.coordinate, span, span);
+    [self.mcMapView setRegion:[self.mcMapView regionThatFits:region] animated:YES];
 }
 
 - (MKOverlayRenderer *) mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay

@@ -10,11 +10,13 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Social/Social.h>
 #import <MapKit/MapKit.h>
+#import "AJGPlace.h"
 
 @interface AJGHomeViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (nonatomic) double distanceInMeters;
 @property (nonatomic) int mcDistance;
-@property (strong, nonatomic) CLLocation *currentLocation;
+@property (nonatomic, strong) CLLocation *currentLocation;
+@property (nonatomic, strong, readonly) AJGPlace *nearestMcDonalds;
 
 @end
