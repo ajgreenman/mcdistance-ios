@@ -171,7 +171,6 @@
             MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
             point.coordinate = self.nearestMcDonalds.location.coordinate;
             point.title = @"Nearest McDonald's";
-            point.subtitle = self.nearestMcDonalds.address;
             
             [self.mcMapView removeAnnotations:self.mcMapView.annotations];
             [self.mcMapView addAnnotation:point];

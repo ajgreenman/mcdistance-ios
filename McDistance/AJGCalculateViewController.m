@@ -14,6 +14,11 @@
 }
 
 @property (weak, nonatomic) IBOutlet MKMapView *mcMapView;
+@property (weak, nonatomic) IBOutlet UILabel *mcDistancesAway;
+@property (weak, nonatomic) IBOutlet UILabel *mcMetersAway;
+@property (weak, nonatomic) IBOutlet UILabel *mcOtherMcDistance;
+@property (weak, nonatomic) IBOutlet UILabel *mcOtherMetersAway;
+@property (nonatomic) double minimum_distance;
 
 @end
 
@@ -38,7 +43,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        
     }
     
     return self;
@@ -53,13 +57,19 @@
     tapRecognizer.numberOfTouchesRequired = 1;
     [self.mcMapView addGestureRecognizer:tapRecognizer];
     
+    self.mcDistancesAway.text = @"McDistances away from location: ";
+    self.mcMetersAway.text = @"Meters away from location:";
+    self.mcOtherMcDistance.text = @"Other location's McDistance:";
+    self.mcOtherMetersAway.text = @"Other location's McDistance in meters:";
+    self.minimum_distance = 50.0;
+    
     [self updateUI];
 }
 
 -(IBAction)tapMap:(UITapGestureRecognizer *)recognizer
 {
     CGPoint point = [recognizer locationInView:self.mcMapView];
-    CLLocationCoordinate2D coordinate = [self.mcMapView convertPoint:point toCoordinateFromView:self.view];
+    CLLocationCoordinate2D coordinate = [self.mcMapView convertPoint:point toCoordinateFromView:self.mcMapView];
     CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
     
     self.otherLocation = location;
@@ -125,9 +135,11 @@
     
     MKPointAnnotation *point1 = [[MKPointAnnotation alloc] init];
     point1.coordinate = self.currentMcLocation.location.coordinate;
+    point1.title = @"Nearest McDonald's";
     
     MKPointAnnotation *point2 = [[MKPointAnnotation alloc] init];
     point2.coordinate = self.currentLocation.coordinate;
+    point2.title = @"Your Location";
     
     [points addObject:point1];
     [points addObject:point2];
@@ -135,9 +147,11 @@
     if(self.otherMcLocation) {
         MKPointAnnotation *point3 = [[MKPointAnnotation alloc] init];
         point3.coordinate = self.otherMcLocation.location.coordinate;
+        point3.title = @"Other Location's Nearest McDonald's";
         
         MKPointAnnotation *point4 = [[MKPointAnnotation alloc] init];
         point4.coordinate = self.otherLocation.coordinate;
+        point4.title = @"Other Location";
         
         [points addObject:point3];
         [points addObject:point4];
@@ -145,6 +159,30 @@
     
     [self.mcMapView removeAnnotations:self.mcMapView.annotations];
     [self.mcMapView addAnnotations:points];
+    
+    double myDistance = [self.currentLocation distanceFromLocation:self.currentMcLocation.location];
+    double distanceBetween;
+    if(self.otherLocation) {
+        distanceBetween = [self.currentLocation distanceFromLocation:self.otherLocation];
+    } else {
+        distanceBetween = 0;
+    }
+    
+    NSString *mcAway = [NSString stringWithFormat:@"McDistances away from location: %.02lf", distanceBetween / myDistance];
+    NSString *mcBetween = [NSString stringWithFormat:@"Meters away from location: %.02lf", distanceBetween];
+    double otherDistance = [self.otherLocation distanceFromLocation:self.otherMcLocation.location];
+    NSString *mcOtherAway = [NSString stringWithFormat:@"Other location's McDistance in meters: %.02lf", otherDistance];
+    int mcDistance;
+    if(otherDistance <= self.minimum_distance) {
+        mcDistance = 0;
+    } else {
+        mcDistance = 1;
+    }
+    NSString *mcOtherDistance = [NSString stringWithFormat:@"Other location's McDistance: %d", mcDistance];
+    self.mcDistancesAway.text = mcAway;
+    self.mcMetersAway.text = mcBetween;
+    self.mcOtherMcDistance.text = mcOtherDistance;
+    self.mcOtherMetersAway.text = mcOtherAway;
 }
 
 
