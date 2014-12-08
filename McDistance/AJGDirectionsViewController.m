@@ -44,6 +44,11 @@
     [super viewDidLoad];
     
     self.mcMapView.delegate = self;
+    
+    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithTitle:@"McBack" style:UIBarButtonItemStyleBordered target:self action:@selector(popView)];
+    
+    self.navigationItem.leftBarButtonItem = customBarItem;
+    
     [self updateMap];
 }
 
@@ -104,6 +109,11 @@
     }
     
     return nil;
+}
+
+- (void) popView
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation

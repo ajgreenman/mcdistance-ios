@@ -63,7 +63,16 @@
     self.mcOtherMetersAway.text = @"Other location's McDistance in meters:";
     self.minimum_distance = 50.0;
     
+    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithTitle:@"McBack" style:UIBarButtonItemStyleBordered target:self action:@selector(popView)];
+    
+    self.navigationItem.leftBarButtonItem = customBarItem;
+    
     [self updateUI];
+}
+
+- (void) popView
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)tapMap:(UITapGestureRecognizer *)recognizer
