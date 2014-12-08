@@ -14,5 +14,6 @@
 @interface AJGDirectionsViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) AJGPlace *destination;
+@property (nonatomic, strong) CLLocation *currentLocation;
 
 @end

@@ -6,83 +6,65 @@
 	<array>
 		<dict>
 			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
-			<string>Sound</string>
-		</dict>
-		<dict>
+			<string>Location Updates</string>
+			<key>Key</key>
+			<string>location_updates</string>
 			<key>DefaultValue</key>
-			<true/>
-			<key>Key</key>
-			<string>play_sounds_preference</string>
-			<key>Title</key>
-			<string>Play Sounds</string>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<true/>
-			<key>Key</key>
-			<string>3D_sound_preference</string>
-			<key>Title</key>
-			<string>3D Sound</string>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>User Info</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
-			<key>Title</key>
-			<string>Name</string>
-			<key>Key</key>
-			<string>user_name</string>
+			<string>1</string>
+			<key>Titles</key>
+			<array>
+				<string>Low</string>
+				<string>Medium</string>
+				<string>High</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>0</string>
+				<string>1</string>
+				<string>2</string>
+			</array>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
-			<string>Experience Level</string>
+			<string>Location Accuracy</string>
 			<key>Key</key>
-			<string>experience_preference</string>
+			<string>location_accuracy</string>
 			<key>DefaultValue</key>
-			<string></string>
+			<string>2</string>
 			<key>Titles</key>
 			<array>
-				<string>Beginner</string>
-				<string>Expert</string>
-				<string>Master</string>
+				<string>Low</string>
+				<string>Medium</string>
+				<string>High</string>
 			</array>
 			<key>Values</key>
 			<array>
-				<real>0</real>
-				<integer>1</integer>
-				<integer>2</integer>
+				<string>0</string>
+				<string>1</string>
+				<string>2</string>
 			</array>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Gravity</string>
+			<string>McDonald&apos;s Radius</string>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSSliderSpecifier</string>
 			<key>Key</key>
-			<string>gravity_preference</string>
+			<string>radius_preference</string>
 			<key>DefaultValue</key>
-			<integer>1</integer>
+			<integer>50</integer>
 			<key>MinimumValue</key>
-			<integer>0</integer>
+			<integer>10</integer>
 			<key>MaximumValue</key>
-			<integer>2</integer>
+			<integer>200</integer>
 		</dict>
 	</array>
 	<key>StringsTable</key>

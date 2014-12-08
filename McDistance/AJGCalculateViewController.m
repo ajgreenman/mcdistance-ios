@@ -185,6 +185,32 @@
     self.mcOtherMetersAway.text = mcOtherAway;
 }
 
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    if([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+    
+    MKPinAnnotationView *pinView = nil;
+    if([annotation isKindOfClass:[MKPointAnnotation class]]) {        
+        if(!pinView) {
+            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinView"];
+            pinView.canShowCallout = YES;
+            if([annotation.title  isEqual: @"Nearest McDonald's"] || [annotation.title isEqual: @"Other Location's Nearest McDonald's"]) {
+                pinView.pinColor = MKPinAnnotationColorRed;
+            } else if([annotation.title  isEqual: @"Your Location"]) {
+                pinView.pinColor = MKPinAnnotationColorGreen;
+            } else {
+                pinView.pinColor = MKPinAnnotationColorPurple;
+            }
+        } else {
+            pinView.annotation = annotation;
+        }
+    }
+    
+    return pinView;
+}
+
 
 
 - (void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation

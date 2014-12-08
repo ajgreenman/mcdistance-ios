@@ -16,6 +16,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Override point for customization after application launch.
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"McDistance"];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    
     self.hvc = [[AJGHomeViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.hvc];
     self.window.rootViewController = navController;

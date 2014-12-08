@@ -22,6 +22,9 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dJJ-Ut-6U7">
                     <rect key="frame" x="0.0" y="189" width="320" height="379"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Xvq-bp-Yyj"/>
+                    </connections>
                 </mapView>
                 <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N1J-Kr-WnI">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

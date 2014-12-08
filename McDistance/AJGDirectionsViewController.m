@@ -18,6 +18,13 @@
 
 @implementation AJGDirectionsViewController
 
+- (void) setCurrentLocation:(CLLocation *)currentLocation
+{
+    _currentLocation = currentLocation;
+    
+    [self updateMap];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -36,7 +43,6 @@
 {
     [super viewDidLoad];
     
-    self.mcMapView.showsUserLocation = YES;
     self.mcMapView.delegate = self;
     [self updateMap];
 }
@@ -48,16 +54,23 @@
 
 - (void) updateLocation: (NSNotification *) notification
 {
-    [self updateMap];
-}
+    CLLocation *location = [[notification userInfo] valueForKey:@"newLocationResult"];
+    
+    self.currentLocation = location;}
 
 - (void) updateMap
 {
-    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    point.coordinate = self.destination.location.coordinate;
-    point.title = @"Nearest McDonald's";
-    point.subtitle = self.destination.address;
-    [self.mcMapView addAnnotation:point];
+    [self.mcMapView removeAnnotations:self.mcMapView.annotations];
+    
+    MKPointAnnotation *point1 = [[MKPointAnnotation alloc] init];
+    point1.coordinate = self.destination.location.coordinate;
+    point1.title = @"Nearest McDonald's";
+    [self.mcMapView addAnnotation:point1];
+    
+    MKPointAnnotation *point2 = [[MKPointAnnotation alloc] init];
+    point2.coordinate = self.currentLocation.coordinate;
+    point2.title = @"Current Location";
+    [self.mcMapView addAnnotation:point2];
     
     MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
     [request setSource:[MKMapItem mapItemForCurrentLocation]];
@@ -101,33 +114,20 @@
     
     MKPinAnnotationView *pinView = nil;
     if([annotation isKindOfClass:[MKPointAnnotation class]]) {
-        pinView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinView"];
-        
         if(!pinView) {
             pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinView"];
             pinView.canShowCallout = YES;
-            pinView.pinColor = MKPinAnnotationColorRed;
-            pinView.animatesDrop = YES;
+            if([annotation.title  isEqual: @"Nearest McDonald's"]) {
+                pinView.pinColor = MKPinAnnotationColorRed;
+            } else {
+                pinView.pinColor = MKPinAnnotationColorGreen;
+            }
         } else {
             pinView.annotation = annotation;
         }
     }
-        
-        pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        
-        UIImageView *iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Logo"]];
-        pinView.leftCalloutAccessoryView = iconView;
     
     return pinView;
-}
-
-- (void) mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{
-    id <MKAnnotation> annotation = [view annotation];
-    if([annotation isKindOfClass:[MKPointAnnotation class]]) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Disclosure Pressed" message:@"Click cancel!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
-        [alertView show];
-    }
 }
 
 @end

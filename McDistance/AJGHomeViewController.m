@@ -58,7 +58,6 @@
         
         self.distanceInMeters = -1;
         self.mcDistance = 1;
-        self.minimum_distance = 50.0;
     }
     
     return self;
@@ -68,8 +67,10 @@
 {
     [super viewDidLoad];
     
-    self.mcMapView.showsUserLocation = YES;
     self.mcMapView.delegate = self;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.minimum_distance = [[defaults objectForKey:@"radius_preference"] doubleValue];
     
     [self getLastLocation];
 }
@@ -114,6 +115,7 @@
 - (IBAction)getDirections:(id)sender {
     AJGDirectionsViewController *dvc = [[AJGDirectionsViewController alloc] init];
     dvc.destination = self.nearestMcDonalds;
+    dvc.currentLocation = self.currentLocation;
     
     [self.navigationController pushViewController:dvc animated:YES];
 }
@@ -168,12 +170,17 @@
             MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, span, span);
             [self.mcMapView setRegion:[self.mcMapView regionThatFits:region] animated:YES];
             
-            MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-            point.coordinate = self.nearestMcDonalds.location.coordinate;
-            point.title = @"Nearest McDonald's";
+            MKPointAnnotation *point1 = [[MKPointAnnotation alloc] init];
+            point1.coordinate = self.nearestMcDonalds.location.coordinate;
+            point1.title = @"Nearest McDonald's";
+            
+            MKPointAnnotation *point2 = [[MKPointAnnotation alloc] init];
+            point2.coordinate = self.currentLocation.coordinate;
+            point2.title = @"Current Location";
             
             [self.mcMapView removeAnnotations:self.mcMapView.annotations];
-            [self.mcMapView addAnnotation:point];
+            [self.mcMapView addAnnotation:point1];
+            [self.mcMapView addAnnotation:point2];
         }
     }
 }
@@ -224,6 +231,30 @@
 - (void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     [self updateUI];
+}
+
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    if([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+    
+    MKPinAnnotationView *pinView = nil;
+    if([annotation isKindOfClass:[MKPointAnnotation class]]) {
+        if(!pinView) {
+            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinView"];
+            pinView.canShowCallout = YES;
+            if([annotation.title  isEqual: @"Nearest McDonald's"]) {
+                pinView.pinColor = MKPinAnnotationColorRed;
+            } else {
+                pinView.pinColor = MKPinAnnotationColorGreen;
+            }
+        } else {
+            pinView.annotation = annotation;
+        }
+    }
+    
+    return pinView;
 }
 
 @end
